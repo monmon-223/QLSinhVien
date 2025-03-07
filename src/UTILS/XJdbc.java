@@ -22,13 +22,7 @@ public class XJdbc {
             throw new RuntimeException(ex);
         }
     }
-    /*
-     * Xây dựng PreparedStatement
-     * @param sql là câu lệnh SQL chứa có thể chứa tham số. Nó có thể là một lời gọi thủ tục lưu
-     * @param args là danh sách các giá trị được cung cấp cho các tham số trong câu lệnh sql
-     * @return PreparedStatement tạo được
-     * @throws java.sql.SQLException lỗi sai cú pháp
-     */
+
     public static PreparedStatement getStmt(String sql, Object...args) throws SQLException{
         Connection connection = DriverManager.getConnection(dburl, username, password);
         PreparedStatement pstmt = null;
@@ -62,11 +56,7 @@ public class XJdbc {
             throw new RuntimeException(e);
         }
     }
-    /*
-     * Thực hiện câu lệnh SQL truy vấn (SELECT) hoặc thủ tục lưu truy vấn dữ liệu
-     * @param sql là câu lệnh SQL chứa có thể chứa tham số. Nó có thể là một lời gọi thủ tục lưu
-     * @param args là danh sách các giá trị được cung cấp cho các tham số trong câu lệnh sql
-     */    
+   
     public static ResultSet query(String sql, Object...args) {
         try {
             PreparedStatement stmt = XJdbc.getStmt(sql, args);
